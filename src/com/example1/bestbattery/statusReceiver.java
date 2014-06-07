@@ -7,6 +7,7 @@ import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
@@ -16,10 +17,11 @@ public class statusReceiver extends BroadcastReceiver{
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		
-			
-			int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
-			int scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
-			float batteryPct = level / (float)scale;
+		    IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+		    Intent batteryStatus = context.registerReceiver(null, ifilter);
+			int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+			int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+			float batteryPct = (level / (float)scale)*100;
 			Toast.makeText(context, "Battery lvl is:"+batteryPct,Toast.LENGTH_SHORT).show();
 			NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
 					context).setSmallIcon(R.drawable.ic_launcher)

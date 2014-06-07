@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		view = (TextView) findViewById(R.id.textView1);
 		view.setText("");
-		IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+		/*IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 		Intent batteryStatus = this.registerReceiver(null, ifilter);
 		int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
 		int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
 				NotificationManager mNotificationManager = (NotificationManager) this
 				.getSystemService(Context.NOTIFICATION_SERVICE);
 				// mId allows you to update the notification later on.
-				mNotificationManager.notify(2, mBuilder.build());
+				mNotificationManager.notify(2, mBuilder.build());*/
 	}
 
 	@Override
